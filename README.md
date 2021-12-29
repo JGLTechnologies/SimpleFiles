@@ -9,7 +9,7 @@ SimpleFiles is a go library to make reading and writing to file easier. SimpleFi
 <br>
 
 ```
-go get github.com/Nebulizer1213/SimpleFiles
+go get github.com/JGLTechnologies/SimpleFiles
 ```
 
 <br>
@@ -21,7 +21,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Nebulizer1213/SimpleFiles"
+	"github.com/JGLTechnologies/SimpleFiles"
 )
 
 func main() {
@@ -49,7 +49,7 @@ Writing JSON to a file
 package main
 
 import (
-	"github.com/Nebulizer1213/SimpleFiles"
+	"github.com/JGLTechnologies/SimpleFiles"
 )
 
 func main() {
