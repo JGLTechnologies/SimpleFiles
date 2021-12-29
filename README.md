@@ -1,10 +1,8 @@
-# SimpleFiles
-
 <a href="https://jgltechnologies.com/discord">
 <img src="https://discord.com/api/guilds/844418702430175272/embed.png">
 </a>
 
-<br>
+# SimpleFiles
 
 SimpleFiles is a go library to make reading and writing to file easier.
 
