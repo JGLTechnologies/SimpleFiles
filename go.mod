@@ -1,3 +1,3 @@
-module github.com/Nebulizer1213/SimpleFiles
+module github.com/JGLTechnologies/SimpleFiles
 
 go 1.17
