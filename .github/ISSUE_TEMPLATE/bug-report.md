@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Describe this issue template's purpose here.
+about: Bug report template
 title: ''
 labels: bug
 assignees: Nebulizer1213
