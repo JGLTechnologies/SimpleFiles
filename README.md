@@ -4,7 +4,7 @@
 
 # SimpleFiles
 
-SimpleFiles is a go library to make reading and writing to file easier. SimpleFiles uses a RWMutex to prevent errors when using a file in multiple gorotines.
+SimpleFiles is a go library to make reading and writing to file easier. SimpleFiles uses a RWMutex to prevent errors when using a file in multiple goroutines.
 
 <br>
 
