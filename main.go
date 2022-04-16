@@ -9,14 +9,6 @@ import (
 	"sync"
 )
 
-type FileWriter struct {
-	File *File
-}
-
-func (fw *FileWriter) Write(p []byte) (n int, err error) {
-	return len(p), fw.File.Write(p)
-}
-
 type File struct {
 	name string
 	Lock *sync.RWMutex
@@ -92,7 +84,11 @@ func (f *File) Write(b []byte) error {
 }
 
 func (f *File) Writer() io.Writer {
-	return &FileWriter{File: f}
+	wr, err := os.OpenFile(f.name, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		return nil
+	}
+	return wr
 }
 
 func New(name string) (*File, error) {
