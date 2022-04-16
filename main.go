@@ -3,7 +3,6 @@ package SimpleFiles
 import (
 	"encoding/json"
 	"encoding/xml"
-	"errors"
 	"io/ioutil"
 	"os"
 	"sync"
@@ -85,16 +84,10 @@ func (f *File) Write(b []byte) error {
 
 func New(name string) (*File, error) {
 	lock := &sync.RWMutex{}
-	file, err := os.Open(name)
-	if errors.Is(err, os.ErrNotExist) {
-		newFile, err := os.Create(name)
-		newFile.Close()
-		if err != nil {
-			return &File{name, lock}, err
-		}
-	} else if err != nil {
-		return &File{name, lock}, err
-	}
+	file, err := os.OpenFile(name, os.O_CREATE, 0644)
 	file.Close()
+	if err != nil {
+		return &File{}, err
+	}
 	return &File{name, lock}, nil
 }
