@@ -3,10 +3,19 @@ package SimpleFiles
 import (
 	"encoding/json"
 	"encoding/xml"
+	"io"
 	"io/ioutil"
 	"os"
 	"sync"
 )
+
+type FileWriter struct {
+	File *File
+}
+
+func (fw *FileWriter) Write(p []byte) (n int, err error) {
+	return len(p), fw.File.Write(p)
+}
 
 type File struct {
 	name string
@@ -80,6 +89,10 @@ func (f *File) Write(b []byte) error {
 	defer f.Lock.Unlock()
 	err := ioutil.WriteFile(f.name, b, 0644)
 	return err
+}
+
+func (f *File) Writer() io.Writer {
+	return &FileWriter{File: f}
 }
 
 func New(name string) (*File, error) {
