@@ -27,7 +27,8 @@ import (
 func main() {
 	var j map[string]interface{}
 	// If the file does not exist it will be created.
-	f, err := SimpleFiles.New("test.json")
+	// Use nil for default file mode.
+	f, err := SimpleFiles.New("test.json", nil)
 	if err != nil {
 		panic(err)
 	} else {
@@ -55,7 +56,8 @@ import (
 func main() {
 	j := map[string]interface{}{"name": "Joe", "age": 47}
 	// If the file does not exist it will be created.
-	f, err := SimpleFiles.New("test.json")
+	// Use nil for default file mode.
+	f, err := SimpleFiles.New("test.json", nil)
 	if err != nil {
 		panic(err)
 	} else {
