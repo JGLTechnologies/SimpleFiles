@@ -183,7 +183,7 @@ func New(name string, perm *os.FileMode) (*File, error) {
 	if err != nil {
 		return nil, err
 	}
-	finalPerm := defaultPerm
+	var finalPerm os.FileMode = defaultPerm
 	if perm != nil {
 		finalPerm = *perm
 	}
