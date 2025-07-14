@@ -35,7 +35,7 @@ func (f *File) ReadJSON(v interface{}) error {
 	return json.Unmarshal(data, v)
 }
 
-func ReadJSONAs[T any](f *File) (T, error) {
+func (f *File) ReadJSONAs[T any]() (T, error) {
 	var result T
 	f.lock.RLock()
 	defer f.lock.RUnlock()
@@ -57,7 +57,7 @@ func (f *File) ReadXML(v interface{}) error {
 	return xml.Unmarshal(data, v)
 }
 
-func ReadXMLAs[T any](f *File) (T, error) {
+func (f *File) ReadXMLAs[T any]() (T, error) {
 	var result T
 	f.lock.RLock()
 	defer f.lock.RUnlock()
@@ -79,7 +79,7 @@ func (f *File) ReadYAML(v interface{}) error {
 	return yaml.Unmarshal(data, v)
 }
 
-func ReadYAMLAs[T any](f *File) (T, error) {
+func (f *File) ReadYAMLAs[T any]() (T, error) {
 	var result T
 	f.lock.RLock()
 	defer f.lock.RUnlock()
