@@ -35,18 +35,6 @@ func (f *File) ReadJSON(v interface{}) error {
 	return json.Unmarshal(data, v)
 }
 
-func (f *File) ReadJSONAs[T any]() (T, error) {
-	var result T
-	f.lock.RLock()
-	defer f.lock.RUnlock()
-	data, err := os.ReadFile(f.name)
-	if err != nil {
-		return result, err
-	}
-	err = json.Unmarshal(data, &result)
-	return result, err
-}
-
 func (f *File) ReadXML(v interface{}) error {
 	f.lock.RLock()
 	defer f.lock.RUnlock()
@@ -57,18 +45,6 @@ func (f *File) ReadXML(v interface{}) error {
 	return xml.Unmarshal(data, v)
 }
 
-func (f *File) ReadXMLAs[T any]() (T, error) {
-	var result T
-	f.lock.RLock()
-	defer f.lock.RUnlock()
-	data, err := os.ReadFile(f.name)
-	if err != nil {
-		return result, err
-	}
-	err = xml.Unmarshal(data, &result)
-	return result, err
-}
-
 func (f *File) ReadYAML(v interface{}) error {
 	f.lock.RLock()
 	defer f.lock.RUnlock()
@@ -77,18 +53,6 @@ func (f *File) ReadYAML(v interface{}) error {
 		return err
 	}
 	return yaml.Unmarshal(data, v)
-}
-
-func (f *File) ReadYAMLAs[T any]() (T, error) {
-	var result T
-	f.lock.RLock()
-	defer f.lock.RUnlock()
-	data, err := os.ReadFile(f.name)
-	if err != nil {
-		return result, err
-	}
-	err = yaml.Unmarshal(data, &result)
-	return result, err
 }
 
 func (f *File) ReadString() (string, error) {
